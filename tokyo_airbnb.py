@@ -109,5 +109,8 @@ st.write(popular_house.sort_values(by=['number_of_reviews','reviews_per_month'],
 st.write(" La mayoría de las casas de familia más populares están en Shinjuku Ku (4 casas), algunas están en Katsushika Ku y Katsushika Ku y Taito Ku (2 cada una).")
 st.write(" Las 10 casas de familia más populares son Entire. Se considera temporalmente que si desea hacer casas de familia, el Entire puede ser una buena opción.")
 
+
 if st.sidebar.button('gracias'):
     st.balloons()
+else:
+    st.write(' gracias a todos!!!')
