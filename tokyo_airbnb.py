@@ -8,8 +8,17 @@ from datetime import datetime
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-st.title("Mi primero app de Streamlit Análisis y visualización de datos de Tokyo_Airbnb")
+st.title("Análisis y visualización de datos de Tokyo_Airbnb")
 st.sidebar.image("pngkey.com-airbnb-logo-png-605967.png",width=72)
+
+st.markdown("""
+Presentamos este informe donde analizaremos los datos de Airbnb en Tokio. Intentaremos averiguar qué características tienen un impacto en el precio de un lugar. y responderemos a algunas preguntas como: ¿Cuáles son las épocas más concurridas del año para visitar Tokio? ¿Cuál es la tasa de ocupación? ¿En qué medida se disparan los precios?:
+- ¿Qué tipo de alojamientos es más solicitado? (apartamento completo, compartido o privado)
+- ¿Qué barrio es más popular?
+- ¿Qué barrio es el más caro y más barato?
+- ¿Cuál es el precio medio por alojamiento?
+    """)
+
 
 datos = pd.read_csv('tokyo_airbnb.csv')
 datos['host_name'].fillna("0",inplace = True)
