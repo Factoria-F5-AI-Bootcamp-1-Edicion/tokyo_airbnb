@@ -55,10 +55,26 @@ if start_time != datetime(2018, 1, 2):
         st.subheader(f" 3. Todos los comentarios del día {start_time}")
         st.write(datos.loc[datos['last_review']==start_time])
 
-st.sidebar.write("4. Análisis por host_name")
-st.subheader(" 4. Se puede ver que host_name está relativamente concentrado, lo que puede confirmar la conclusión extraída en las listas de host_calculadas en el tipo continuo anterior.Vamos a verlo en detalle.")
+st.sidebar.write("4.1 Análisis por host_name")
+st.subheader(" 4.1 Se puede ver que host_name está relativamente concentrado, lo que puede confirmar la conclusión extraída en las listas de host_calculadas en el tipo continuo anterior.Vamos a verlo en detalle.")
 arr = datos[['host_name','name']].groupby('host_name').count().sort_values(by='name', ascending=False)
 st.line_chart(arr)
+
+st.sidebar.write("4.2 Análisis por vnumericas")
+st.subheader(" 4.2 Evaluando correlación entre precio, número de noches mínimas, número de revisiones, calificación por mes (0 -100).")
+vnumericas = datos[["price", "minimum_nights","number_of_reviews","reviews_per_month"]]
+sns.heatmap(vnumericas.corr(), annot=True, cmap='Blues')
+st.pyplot()
+
+st.markdown("""
+Conclusión:
+-  R= 0.029 Existe nula correlación entre precio y número de noches mínimas.
+-  R= 0.00084 Existe nula correlación entre precio y número de revisiones.
+-  R= 0.023 Existe nula correlación entre precio y valoraciones por mes.
+-  R= 0.16 Existe nula correlación entre número de noches mínimas y valoraciones por mes.
+-  R= 0.0073 Existe nula correlación entre número de noches mínimas y número de revisiones.
+-  R= 0.48 Existe debil correlación entre número de revisiones y valoraciones por mes.
+    """)
 
 st.sidebar.write("5. Tokyo Alojamiento Mapa")
 st.subheader("5. Tokyo Alojamiento Mapa")
@@ -75,7 +91,7 @@ st.plotly_chart(fig)
 
 st.subheader("Descubre explorando:")
 st.markdown("""
-            - Más del 40 % de las celebridades se concentran en las tres áreas centrales de Tokyo, el distrito de 'Shibuya Ku', 'Sumida Ku' y 'Nerima Ku'.
+            - Más del 40 % de las alojamientos se concentran en las tres áreas centrales de Tokyo, el distrito de 'Shibuya Ku', 'Sumida Ku' y 'Nerima Ku'.
             - Para las áreas alrededor del distrito de  'Shibuya Ku', 'Sumida Ku' y 'Nerima Ku', la distribución de casas de familia también está cerca de los límites de estas tres áreas, especialmente 'Setagaya Ku' y 'Arakawa Ku'.
             - Las áreas restantes están distribuidas de manera relativamente uniforme y no hay un centro obvio.
             """)
