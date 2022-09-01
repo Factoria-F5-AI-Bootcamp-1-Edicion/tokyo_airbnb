@@ -131,9 +131,30 @@ print(avg_review)
 print(avg_month_review)
 popular_house = datos[(datos['number_of_reviews']>avg_review) & (datos['reviews_per_month']>avg_month_review)]
 st.write(popular_house.sort_values(by=['number_of_reviews','reviews_per_month'],ascending=False).head(10))
-st.write(" La mayoría de las casas de familia más populares están en Shinjuku Ku (4 casas), algunas están en Katsushika Ku y Katsushika Ku y Taito Ku (2 cada una).")
-st.write(" Las 10 casas de familia más populares son Entire. Se considera temporalmente que si desea hacer casas de familia, el Entire puede ser una buena opción.")
+st.markdown("""
+Del análisis anterior, se puede concluir que:
+-  La mayoría de las casas de familia más populares están en Shinjuku Ku (4 casas), algunas están en Katsushika Ku y Katsushika Ku y Taito Ku (2 cada una).
+-  Las 10 casas de familia más populares son Entire. Se considera temporalmente que si desea hacer casas de familia, el Entire puede ser una buena opción.
+    """)
 
+st.sidebar.write("11. Conclusiones")
+st.subheader("Conclusiones")
+st.markdown("""
+- Después de realizar el estudio por barrios, podemos determinar que más del 60% de los alojamientos se concentran en las tres áreas centrales de Tokyo, el distrito de 'Shibuya Ku', 'Sumida Ku' y 'Nerima Ku'. Zonas donde abundan museos, zonas de ocio y muy comerciales. 
+- Observamos que, por tipo de alojamiento, son alquilados por el siguiente orden:
+el 65,09% (7463) apartamentos completos
+8.71% (999) habitaciones compartidas
+26.20% (3004) habitaciones privadas 
+- Deducimos que el propietario prefiere alquilar un apartamento o casa completa. 
+- En cuanto al precio, hemos observado que existen 4 barrios donde su precio máximo coincide, siendo de 1000046 yenes:
+
+- Toshima Ku  1000046
+- Taito Ku  1000046
+- Chiyoda Ku  1000046
+- Nakano Ku  1000046
+-  Nos faltó descubrir si es casualidad o por normativa en Japón los precios máximos podrían coincidir,
+- El barrio más barato nos aparece Higashiyamato Shi 3013
+    """)
 
 if st.sidebar.button('gracias'):
     st.balloons()
